@@ -29,7 +29,11 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public double CalculateStayTotal(int numberOfNights)
         {
-            return 0;
+            if (numberOfNights >= 3)
+            {
+                return numberOfNights * 89.99;
+            }
+            return numberOfNights * 99.99;
         }
 
         /*
@@ -48,8 +52,17 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public double CalculateStayTotal(int numberOfNights, int numOfWeekendNights)
         {
+            if (numberOfNights < 3 && numberOfNights >= 1)
+            {
+                return ((numberOfNights - numOfWeekendNights) * 99.99) + (numOfWeekendNights * 99.99);
+            }
+            if (numberOfNights >= 3 && numberOfNights >= 1)
+            {
+                return ((numberOfNights - numOfWeekendNights) * 89.99) + (numOfWeekendNights * 99.99);
+            }
             return 0;
         }
+
 
         /*
          * Innovator's Inn continues to grow in popularity and now offers a rewards program to its customers.
@@ -70,7 +83,26 @@ namespace TechElevator.Exercises.LogicalBranching
         */
         public double CalculateStayTotal(int numberOfNights, int numOfWeekendNights, bool isRewardsMember)
         {
+            if (isRewardsMember == true)
+            {
+                return numberOfNights * 89.99;
+            }
+
+            if (isRewardsMember == false)
+            {
+                
+                    if (numberOfNights < 3 && numberOfNights >= 1)
+                    {
+                        return ((numberOfNights - numOfWeekendNights) * 99.99) + (numOfWeekendNights * 99.99);
+                    }
+                    if (numberOfNights >= 3 && numberOfNights >= 1)
+                    {
+                        return ((numberOfNights - numOfWeekendNights) * 89.99) + (numOfWeekendNights * 99.99);
+                    }
+                
+            }
             return 0;
+
         }
     }
 }

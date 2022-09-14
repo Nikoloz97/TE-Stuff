@@ -24,7 +24,15 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public double CalculateShippingTotal(int weightInPounds)
         {
-            return 0;
+            if (weightInPounds <= MaxWeightPounds)
+            {
+                return weightInPounds * UpTo40PoundRate;
+            }
+            else
+            {
+                return (MaxWeightPounds * UpTo40PoundRate) + (weightInPounds - 40) * Over40PoundRate;
+
+            }
         }
 
         /*
@@ -41,8 +49,22 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public double CalculateShippingTotal(int weightInPounds, bool hasDiscount)
         {
-            return 0;
-        }
+            if (weightInPounds <= MaxWeightPounds && hasDiscount == true)
+            {
+                return ((weightInPounds * UpTo40PoundRate) - ((weightInPounds * UpTo40PoundRate) * 0.1));
+            }
+            if (weightInPounds >= MaxWeightPounds && hasDiscount == true)
+            {
+                return ((MaxWeightPounds * UpTo40PoundRate) + (weightInPounds - 40) * Over40PoundRate) - (((MaxWeightPounds * UpTo40PoundRate) + (weightInPounds - 40) * Over40PoundRate) * 0.10);
+            }
+            if (weightInPounds >= MaxWeightPounds && hasDiscount == false)
+                {
+                return ((MaxWeightPounds * UpTo40PoundRate) + (weightInPounds - 40) * Over40PoundRate);
+            }
+            return weightInPounds * UpTo40PoundRate;
+
+            }
+        
 
         /*
          * As the business grows for Scamper Shipping Company, they now offer discounts in various amounts.
@@ -56,7 +78,16 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public double CalculateShippingTotal(int weightInPounds, double discountPercentage)
         {
+            if (weightInPounds <= MaxWeightPounds)
+            {
+                return ((weightInPounds * UpTo40PoundRate) - ((weightInPounds * UpTo40PoundRate) * discountPercentage));
+            }
+            if (weightInPounds > MaxWeightPounds)
+            {
+                return ((MaxWeightPounds * UpTo40PoundRate) + (weightInPounds - 40) * Over40PoundRate) - (((MaxWeightPounds * UpTo40PoundRate) + (weightInPounds - 40) * Over40PoundRate) * discountPercentage);
+            }
             return 0;
+
         }
     }
 }

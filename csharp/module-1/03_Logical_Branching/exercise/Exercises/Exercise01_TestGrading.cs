@@ -21,6 +21,11 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public bool GradeTestPassFail(int score)
         {
+ 
+            if (score >= 70)
+            {
+                return true;
+            }
             return false;
         }
 
@@ -41,6 +46,18 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public int GradeTestNumeric(int score)
         {
+            if (score >= 90)
+            {
+                return 3;
+            }
+            if (89 >= score && score >= 50)
+            {
+                return 2;
+            }
+            if (49 >= score && score >= 25)
+            {
+                return 1;
+            }
             return 0;
         }
 
@@ -60,7 +77,23 @@ namespace TechElevator.Exercises.LogicalBranching
          */
         public char GradeTestLetter(int score)
         {
-            return ' ';
+            if (score >= 90) {
+                return 'A';
+            }
+            if (89 >= score && score >= 80)
+            {
+                return 'B';
+            }
+            if (79 >= score && score >= 70)
+            {
+                return 'C';
+            }
+            if (69 >= score && score >= 60)
+            {
+                return 'D';
+            }
+     
+            return 'F';
         }
     }
 }

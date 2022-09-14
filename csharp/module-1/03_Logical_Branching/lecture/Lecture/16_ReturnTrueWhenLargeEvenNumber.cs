@@ -10,7 +10,14 @@
         */
         public string ReturnBigEvenNumber(int number)
         {
-            return null;
+            if ((number % 2 == 0) && (number > 100) && (number % 5 == 0)) {
+                return "Big Even Number";
+            }
+            if (number > 100)
+            {
+                return "Big Number";
+            }
+            return "";
         }
     }
 }
