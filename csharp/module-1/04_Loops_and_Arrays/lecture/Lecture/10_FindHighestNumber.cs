@@ -9,7 +9,34 @@
         */
         public int FindTheHighestNumber(int[] randomNumbers)
         {
-            return 0;
+            int highestNumber = randomNumbers[0];
+            for (int i = 1; i < randomNumbers.Length; i++)
+            {
+                if (randomNumbers[i] > randomNumbers[i - 1])
+                {
+                    highestNumber = randomNumbers[i];
+                }
+                continue;
+            }
+            return highestNumber;
         }
+
+
+       /* public int FindTheHighestNumber(int[] randomNumbers)
+        {
+            int highestNumber = randomNumbers[0];
+            for (int i = 0; i < randomNumbers.Length; i++)
+            {
+                int currentValue = randomNumbers[i];
+                if (currentValue > highestNumber)
+                {
+                    highestNumber = currentValue;
+                }
+
+            }
+            return highestNumber;
+        }*/
+
+
     }
 }

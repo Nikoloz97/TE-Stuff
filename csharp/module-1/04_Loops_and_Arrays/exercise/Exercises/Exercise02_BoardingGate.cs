@@ -30,7 +30,12 @@ namespace Exercises
         */
         public bool[] GenerateSeatingChart(int numberOfSeats)
         {
-            return new bool[] { };
+            bool[] seatsCreated = new bool[numberOfSeats];
+            for (int i = 0; i < numberOfSeats; i++)
+            {
+                seatsCreated[i] = true;
+            }
+            return seatsCreated;
         }
 
         /*
@@ -48,7 +53,15 @@ namespace Exercises
         */
         public int GetAvailableSeatCount(bool[] seatingChart)
         {
-            return 0;
+            int seatsAvailable = 0;
+            for (int i = 0; i < seatingChart.Length; i++)
+            {
+                if (seatingChart[i] == true)
+                {
+                    seatsAvailable += 1;
+                }
+            }
+            return seatsAvailable;
         }
 
         /*
@@ -66,7 +79,44 @@ namespace Exercises
 
         public int GetNumberOfFullRows(bool[] seatingChart)
         {
-            return 0;
+            /*int fullRows = 0;
+            for (int i = 2; i < seatingChart.Length; i += 3)
+            {
+                if (seatingChart[i] == false)
+                {
+                    fullRows += 1;
+                }
+                continue;
+            }
+            return fullRows;*/
+
+            int seatCheck = 0;
+            int fullCounter = 0;
+            int fullRows = 0;
+
+            for (int i = 0; i < seatingChart.Length; i++)
+            {
+                if (seatingChart[i] == false)
+                {
+                    fullCounter += 1;
+                    seatCheck += 1;
+                }
+                if (seatingChart[i] == true)
+                {
+                    seatCheck += 1;
+                }
+                if (seatCheck == 3)
+                {
+                    if (fullCounter == 3)
+                    {
+                        fullRows += 1;
+                    }
+                    seatCheck = 0;
+                    fullCounter = 0;
+                }
+                
+            }
+            return fullRows;
         }
     }
 }

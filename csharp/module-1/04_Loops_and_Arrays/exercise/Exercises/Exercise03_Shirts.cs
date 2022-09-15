@@ -21,8 +21,8 @@ namespace Exercises
         BuildOrder() → ['S', 'S', 'S', 'M', 'M', 'L']
         */
         public char[] BuildOrder()
-        {
-            return new char[] { };
+        {          
+            return new char[] { 'S', 'S', 'S', 'M', 'M', 'L' };
         }
 
         /*
@@ -43,7 +43,20 @@ namespace Exercises
         */
         public char[] BuildBulkOrder(int numberOfShirts)
         {
-            return new char[] { };
+            char[] evenDistribution = new char[numberOfShirts];
+            for (int i = 0; i < evenDistribution.Length; i += 3)
+            {
+                evenDistribution[i] = 'S';
+            }
+            for (int i = 1; i < evenDistribution.Length; i += 3)
+            {
+                evenDistribution[i] = 'M';
+            }
+            for (int i = 2; i < evenDistribution.Length; i += 3)
+            {
+                evenDistribution[i] = 'L';
+            }
+            return evenDistribution;
         }
 
         /*
@@ -61,6 +74,13 @@ namespace Exercises
         */
         public bool PlaceRequest(char[] order)
         {
+            for (int i = 0; i < order.Length; i++)
+            {
+                if (order[i] == 'S')
+                {
+                    return true;
+                }
+            }
             return false;
         }
     }
