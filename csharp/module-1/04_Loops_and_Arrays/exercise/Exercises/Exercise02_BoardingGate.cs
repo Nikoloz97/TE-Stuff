@@ -79,16 +79,6 @@ namespace Exercises
 
         public int GetNumberOfFullRows(bool[] seatingChart)
         {
-            /*int fullRows = 0;
-            for (int i = 2; i < seatingChart.Length; i += 3)
-            {
-                if (seatingChart[i] == false)
-                {
-                    fullRows += 1;
-                }
-                continue;
-            }
-            return fullRows;*/
 
             int seatCheck = 0;
             int fullCounter = 0;
