@@ -12,7 +12,13 @@ namespace Exercises
         */
         public string[] List2Array(List<string> stringList)
         {
-            return null;
+            string[] fruit = new string[stringList.Count];
+            for (int i = 0; i < stringList.Count; i++)
+            {
+                fruit[i] += stringList[i];
+            }
+            return fruit;
+
         }
     }
 }

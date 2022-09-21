@@ -11,6 +11,19 @@
         */
         public int Last2(string str)
         {
+            if ((str.Length - 2) > 0)
+            {
+                string yellow = str.Substring(((str.Length) - 2), 2);
+                int counter = 0;
+                for (int i = 0; i < str.Length - 2; i++)
+                {
+                    if (str[i] == yellow[0] && str[i + 1] == yellow[1])
+                    {
+                        counter++;
+                    }
+                }
+                return counter;
+            }
             return 0;
         }
     }

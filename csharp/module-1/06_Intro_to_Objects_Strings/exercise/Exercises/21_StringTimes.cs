@@ -10,7 +10,12 @@
         */
         public string StringTimes(string str, int n)
         {
-            return null;
+            string concatString = "";
+            for (int i = 0; i < n; i++)
+            {
+                concatString += str;
+            }
+            return concatString;
         }
     }
 }

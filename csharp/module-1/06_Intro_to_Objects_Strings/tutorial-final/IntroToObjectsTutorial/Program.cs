@@ -40,6 +40,7 @@ namespace IntroToObjectsTutorial
 
             // Find the first space character
             int firstSpace = sentence.IndexOf(" ");
+
             // Report the length of the first word
             if (firstSpace == -1)
             {
@@ -53,12 +54,22 @@ namespace IntroToObjectsTutorial
                 Console.WriteLine("The first word is " + firstSpace + " characters long.");
             }
 
+
+
             // Replace the word "the" with "the one and only"
             Console.WriteLine(sentence.Replace("the", "the one and only"));
 
             // list the words (split)
             string[] words = sentence.Split(" ");
             Console.WriteLine("The words in this sentence:");
+            for (int i = 0; i < words.Length; i++)
+            {
+                Console.WriteLine(words[i]);
+            }
+
+
+            string[] sentenceWords = sentence.Split(" ");
+            Console.WriteLine("The words in this sentence");
             for (int i = 0; i < words.Length; i++)
             {
                 Console.WriteLine(words[i]);
