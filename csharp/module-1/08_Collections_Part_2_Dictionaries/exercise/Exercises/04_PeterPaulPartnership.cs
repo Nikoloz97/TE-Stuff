@@ -15,7 +15,14 @@ namespace Exercises
          */
         public Dictionary<string, int> PeterPaulPartnership(Dictionary<string, int> peterPaul)
         {
-            return null;
+
+            if (peterPaul["Peter"] >= 5000 && peterPaul["Paul"] >= 10000)
+            {
+                peterPaul.Add("PeterPaulPartnership", peterPaul["Peter"] / 4 + peterPaul["Paul"] / 4);
+                peterPaul["Peter"] -= peterPaul["Peter"]/4;
+                peterPaul["Paul"] -= peterPaul["Paul"]/4;
+            }
+            return peterPaul;
         }
     }
 }

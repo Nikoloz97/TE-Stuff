@@ -10,7 +10,6 @@ namespace CollectionsPart1Tutorial
             // Step One: Declare a List
             List<string> nameList = new List<string>();
 
-
             // Step Two: Add values to a List
             nameList.Add("Ada");
             nameList.Add("Grace");
@@ -24,12 +23,23 @@ namespace CollectionsPart1Tutorial
                 Console.WriteLine("The name at index " + i + " is " + nameList[i]);
             }
 
+            foreach (var item in collection)
+            {
+
+            }
+
 
             // Step Four: Remove an item
             nameList.Remove("Ada");  // or nameList.RemoveAt(0);
 
 
             // Step Five: Looping through List in a foreach loop
+
+            foreach (string name in nameList)
+            {
+                Console.WriteLine("Name: " + name);
+            }
+
             foreach (string name in nameList)
             {
                 Console.WriteLine("Name: " + name);

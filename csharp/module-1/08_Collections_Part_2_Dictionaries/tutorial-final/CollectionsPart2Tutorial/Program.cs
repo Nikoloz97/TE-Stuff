@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace CollectionsPart2Tutorial
 {
     public class CollectionsPart2Tutorial
@@ -12,7 +13,7 @@ namespace CollectionsPart2Tutorial
             Dictionary<string, string> projects = new Dictionary<string, string>();
 
 
-            // Step Two: Add items to a Dictionary
+            // Step Two: Add items to a Dictionary. Key = left side, value = right side;
             projects["Ada"] = "Inventing Computer Programming";
             projects["Grace"] = "COBOL";
             projects["Margaret"] = "Apollo Guidance Computer";

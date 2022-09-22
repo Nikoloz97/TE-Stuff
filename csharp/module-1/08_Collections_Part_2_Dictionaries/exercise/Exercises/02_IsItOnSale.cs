@@ -28,7 +28,27 @@ namespace Exercises
          */
         public double IsItOnSale(string itemNumber)
         {
-            return -1.0;
+            Dictionary<string, double> itemsOnSale = new Dictionary<string, double>()
+            {
+                {"KITCHEN4001", 0.20},{"GARAGE1070",0.15},{"LIVINGROOM", 0.10 },{"KITCHEN6073",0.40 },{"BEDROM3434",0.60 },{"BATH0073",0.15}
+
+            };
+
+            if (itemNumber == "" || itemNumber == null)
+            {
+                return 0.00;
+            }
+
+            foreach (KeyValuePair<string, double> item in itemsOnSale)
+            {
+                if (itemNumber.ToUpper() == item.Key.ToUpper())
+                {
+                    return item.Value;
+                }
+            }
+
+            return 0.00;
         }
     }
+
 }
