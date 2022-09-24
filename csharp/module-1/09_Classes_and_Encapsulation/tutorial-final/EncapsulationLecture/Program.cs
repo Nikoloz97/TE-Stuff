@@ -11,8 +11,8 @@ namespace EncapsulationLecture
             Person david = new Person(1989);
             Dog davidsDog = new Dog("Jerry", "Shepard-Mix", false);
             Dog charliesDog = new Dog("Snoopy", "Beagle", false);
-/*            Dog emptyDog = new Dog();
-*/
+            Dog emptyDog = new Dog();
+
             davidsDog.SpeakSound = "Ruff!";
 
             davidsDog.Speak();
