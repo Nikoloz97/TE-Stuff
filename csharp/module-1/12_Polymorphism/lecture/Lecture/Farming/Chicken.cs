@@ -2,10 +2,13 @@
 
 namespace Lecture.Farming
 {
-    public class Chicken : FarmAnimal
+    public class Chicken : FarmAnimal, ISellable
     {
+        public decimal Price { get; }
+
         public Chicken() : base("Chicken", "cluck")
         {
+            Price = 6;
         }
 
         public void LayEgg()

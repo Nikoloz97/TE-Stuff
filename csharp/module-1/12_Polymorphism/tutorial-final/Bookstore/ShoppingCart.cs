@@ -9,6 +9,7 @@ namespace TechElevator.Bookstore
         // *** Change from MediaItem to IPurchasable
         private List<IPurchasable> itemsToBuy = new List<IPurchasable>();
 
+
         public decimal TotalPrice
         {
             get
