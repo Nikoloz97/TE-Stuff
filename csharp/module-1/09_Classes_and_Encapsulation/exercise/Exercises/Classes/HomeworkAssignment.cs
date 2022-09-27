@@ -39,8 +39,8 @@
 
             public HomeworkAssignment(int totalScore, string theirName)
             {
-            this.PossibleMarks = totalScore;
-            this.SubmitterName = theirName;
+            PossibleMarks = totalScore;
+            SubmitterName = theirName;
             }
         }
 

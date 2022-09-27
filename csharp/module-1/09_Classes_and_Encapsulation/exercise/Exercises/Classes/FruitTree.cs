@@ -8,7 +8,7 @@
         public FruitTree (string typeOfFruit, int startingPiecesOfFruitLeft)
         {
             this.TypeOfFruit = typeOfFruit;
-            this.PiecesOfFruitLeft = startingPiecesOfFruitLeft;
+            PiecesOfFruitLeft = startingPiecesOfFruitLeft;
         }
 
         public bool PickFruit(int numberOfPiecesToRemove)

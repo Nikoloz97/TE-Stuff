@@ -18,6 +18,7 @@ namespace TechElevator.Bookstore
             this.Price = price;
         }
 
+
         public string Author { get; set; }
 
         // Return a string representation of this book
