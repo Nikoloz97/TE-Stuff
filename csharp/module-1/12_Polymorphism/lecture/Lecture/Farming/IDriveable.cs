@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Lecture.Farming
 {
-    class IDriveable
+    public interface IDriveable
     {
+        void Drive();
     }
 }
