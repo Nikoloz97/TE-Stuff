@@ -29,6 +29,7 @@ namespace ExceptionHandling
             {
                 // Flow of control resumes here after the Exception is thrown
                 Console.WriteLine("XXX   Uh-oh, something went wrong...   XXX");
+                Console.WriteLine(e.Message);
             }
 
             Console.WriteLine();
@@ -103,6 +104,7 @@ namespace ExceptionHandling
             * The "finally" block means that if an exception is caught or not, the code
             * in the finally block should run last.
             */
+
             try
             {
                 double finalBalance = Withdraw(6000.00);

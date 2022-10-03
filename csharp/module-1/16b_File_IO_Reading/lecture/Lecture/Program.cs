@@ -6,9 +6,11 @@ namespace Lecture
     {
         static void Main(string[] args)
         {
+            /*  FileAndDirectories fileAndDirectoriesNick = new FileAndDirectories();
+              fileAndDirectoriesNick.UsingTheDirectoryClass();*/
+
             //ReadingInFiles.ReadACharacterFile();
-            //ReadingCSVFiles.ReadFile();
-            //SummingUpNumbers.ReadFile();
+            SummingUpNumbers.ReadFile();
         }
     }
 }

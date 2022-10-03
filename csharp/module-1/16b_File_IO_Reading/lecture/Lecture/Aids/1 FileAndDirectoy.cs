@@ -11,7 +11,7 @@ namespace Lecture.Aids
     *
     * We need to add a reference to System.IO
     */
-    public static class FileAndDirectories
+    public class FileAndDirectories
     {
         /*
         * The static class Directory exposes a lot of methods
@@ -23,7 +23,7 @@ namespace Lecture.Aids
         * C# lets you put the @ in front of a string and it will realize that if any \ are typed
         * they do not need to be escaped and will show up as the literal value.
         */
-        public static void UsingTheDirectoryClass()
+        public void UsingTheDirectoryClass()
         {
             // Getting the current directory our program is running in
             // not always the same directory our .cs code-file is in
