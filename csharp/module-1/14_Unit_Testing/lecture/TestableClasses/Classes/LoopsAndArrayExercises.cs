@@ -14,6 +14,8 @@
             return new int[] { a[1], b[1] };
         }
 
+       
+
         /*
         Given an array of ints length 3, figure out which is larger between the first and last elements
         in the array, and set all the other elements to be that value. Return the changed array.

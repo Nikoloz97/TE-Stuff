@@ -15,5 +15,26 @@ namespace TestableClasses.Classes.Tests
         //.Contains() - Checks to see if collection contains a value/object
 
 
+        [TestMethod]
+        public void MiddleWayTest ()
+        {
+            LoopsAndArrayExercises loopsAndArrayExercises = new LoopsAndArrayExercises();
+
+            // Arrange
+            
+            int[] firstInput = { 1, 2, 23 };
+            int[] secondInput = { 4, 5, 6 };
+
+            //Act
+
+            int[] actualResult = loopsAndArrayExercises.MiddleWay(firstInput, secondInput);
+
+            //Assert
+
+            int[] expectedResult = { 2, 5 };
+            CollectionAssert.AreEqual(expectedResult, actualResult);
+            
+
+        }
     }
 }

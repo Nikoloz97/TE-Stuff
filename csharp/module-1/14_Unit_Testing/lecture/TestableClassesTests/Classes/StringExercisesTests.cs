@@ -17,5 +17,21 @@ namespace TestableClasses.Classes.Tests
 
 
 
+        /*public string MakeAbba(string a, string b)
+        {
+            return a + b + b + a;
+        }*/
+
+        [TestMethod()]
+        public void MakeAbbaTest()
+        {
+            StringExercises stringExercises = new StringExercises();
+
+            string actualResult = stringExercises.MakeAbba("Hi", "Bye");
+
+            Assert.AreEqual("HiByeByeHi", actualResult);
+
+        }
+
     }
 }
