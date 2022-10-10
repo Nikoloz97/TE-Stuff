@@ -5,7 +5,7 @@ namespace Lecture.Aids
 {
     public static class ReadingAndWritingFiles
     {
-        /*public static void OpenAndWrite()
+        public static void OpenAndWrite()
         {
             // Figure the full path of the input file and output file
             string directory = Environment.CurrentDirectory;
@@ -15,27 +15,27 @@ namespace Lecture.Aids
             string outputFullPath = Path.Combine(directory, outputFile);
 
             // Open the existing file with the typo using a StreamReader
-            
-                using (StreamReader sr = new StreamReader(inputFullPath))
+
+            using (StreamReader sr = new StreamReader(inputFullPath))
+            {
+                // Open a StreamWriter where we will output the file
+                using (StreamWriter sw = new StreamWriter(outputFullPath, true))
                 {
-                    // Open a StreamWriter where we will output the file
-                    using (StreamWriter sw = new StreamWriter(outputFullPath, true))
+                    // For each line in the input file, read it in
+                    while (!sr.EndOfStream)
                     {
-                        // For each line in the input file, read it in
-                        while (!sr.EndOfStream)
-                        {
-                            // Read an individual line
-                            string line = sr.ReadLine();
+                        // Read an individual line
+                        string line = sr.ReadLine().Replace("langauge", "language");
 
-                            // Replace the occurence of the word langauge with language
-                            string fixedLine = line.Replace("langauge", "language");
+                        // Replace the occurence of the word langauge with language
+                        string fixedLine = line.Replace("langauge", "language");
 
-                            // Write the new line to the output file
-                            sw.WriteLine(fixedLine);
-                        }
+                        // Write the new line to the output file
+                        sw.WriteLine(fixedLine);
                     }
                 }
-        }*/
+            }
+        }
     }
 }
 

@@ -1,23 +1,31 @@
+
 -- SELECT
 -- Use a SELECT statement to return a literal string
+
+SELECT 'Hello World';
 
 
 -- Use a SELECT statement to add two numbers together (and label the result "sum")
 
-
+SELECT 2 + 2;
 
 -- SELECT ... FROM
 -- Write queries to retrieve...
 
 -- The names from all the records in the state table
 
+SELECT * FROM state;
+
 
 -- The names and populations of all cities
+
+SELECT city_name, population FROM city; 
+
 
 
 -- All columns from the park table
 
-
+SELECT * FROM park;
 
 -- SELECT __ FROM __ WHERE
 -- Write queries to retrieve...

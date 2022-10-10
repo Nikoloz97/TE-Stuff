@@ -43,7 +43,9 @@ namespace FindAndReplace
                             string line = sr.ReadLine();
                             string fixedLine = line.Replace(searchWord, replaceWord);
 
+
                             sw.WriteLine(fixedLine);
+
                         }
                     }
                 }

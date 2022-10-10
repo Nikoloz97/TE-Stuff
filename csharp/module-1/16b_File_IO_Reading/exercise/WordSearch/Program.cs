@@ -65,18 +65,20 @@ namespace WordSearch
             {
                 try
                 {
-                    int counter = 0;
+                    int counter = 1;
                     using (StreamReader sr = new StreamReader(fullPath))
                     {
                         while (!sr.EndOfStream)
                         {
                             string line = sr.ReadLine();
-                            counter++;
                             if (line.Contains(theQuery))
                             {
                                 Console.WriteLine(counter + ") " + line);
 
                             }
+
+                            counter++;
+
 
                         }
 
@@ -88,7 +90,7 @@ namespace WordSearch
                     Console.WriteLine(ex.Message);
                 }
 
-
+                
             }
             }
 
