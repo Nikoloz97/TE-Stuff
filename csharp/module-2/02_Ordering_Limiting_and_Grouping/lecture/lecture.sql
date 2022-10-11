@@ -3,6 +3,8 @@
 -- Populations of all states from largest to smallest.
 
 
+
+
 -- States sorted alphabetically (A-Z) within their census region. The census regions are sorted in reverse alphabetical (Z-A) order.
 
 
@@ -15,10 +17,11 @@
 -- The 10 largest cities by populations
 
 
--- The 20 oldest parks from oldest to youngest in years, sorted alphabetically by name.
+-- Get 20 oldest parks from oldest to youngest in years, sorted alphabetically by name.
 
+SELECT top (20) park_name, (YEAR(GETDATE()) - YEAR(date_established)) AS age_in_years FROM park ORDER BY park_name;
 
-
+Select top(20) date_established, area, park_name FROM park ORDER BY date_established, park_name;
 
 -- CONCATENATING OUTPUTS
 
@@ -26,6 +29,8 @@
 
 
 -- All park names and area
+
+SELECT ('Name: ' + park_name + ', Area:' + CAST(area as VARCHAR)) AS park_and_area FROM park;
 
 
 -- The census region and state name of all states in the West & Midwest sorted in ascending order.
@@ -53,6 +58,8 @@
 -- GROUP BY
 
 -- Count the number of cities in each state, ordered from most cities to least.
+
+Select state_abbreviation, COUNT(city_name) AS city_count from city GROUP BY state_abbreviation ORDER BY city_count DESC;
 
 
 -- Determine the average park area depending upon whether parks allow camping or not.

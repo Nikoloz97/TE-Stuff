@@ -2,3 +2,4 @@
 -- Expected answer is around 20,000,000
 -- (1 row)
 
+select SUM(population) AS california_population from city where state_abbreviation = 'CA';

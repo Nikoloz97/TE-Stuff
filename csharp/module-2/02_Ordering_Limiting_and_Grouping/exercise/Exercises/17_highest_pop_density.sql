@@ -3,3 +3,4 @@
 -- Exepcted answer is around 4,000
 -- (1 row)
 
+select top 1 (population / area) AS population_density from state order by population_density desc;
