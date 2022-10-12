@@ -51,8 +51,15 @@
 -- MovieDB
 -- After running the script to set up the MovieDB database, make sure it is selected in SSMS and confirm it is working correctly by writing queries to retrieve...
 
+
 -- The names of all the movie genres
+
+select * from genre;
 
 
 -- The titles of all the Comedy movies
 
+select title as comedy_titles from movie
+join movie_genre on movie.movie_id = movie_genre.movie_id
+join genre on genre.genre_id = movie_genre.genre_id
+where genre_name = 'Comedy'
