@@ -2,11 +2,25 @@
 
 -- Add Disneyland to the park table. (It was established on 7/17/1955, has an area of 2.1 square kilometers and does not offer camping.)
 
+insert into park (park_name, date_established, area, has_camping)
+values ('DisneyLand', '7/17/1955', 2.1, 0);
+
+select*from park
 
 -- Add Hawkins, IN (with a population of 30,000 and an area of 38.1 square kilometers) and Cicely, AK (with a popuation of 839 and an area of 11.4 square kilometers) to the city table.
 
 
 -- Since Disneyland is in California (CA), add a record representing that to the park_state table.
+
+insert into park_state (park_id, state_abbreviation)
+values ((select park_id from park where park_name = 'Disneyland'), (select state_abbreviation from state where state_name = 'California'));
+-- select park_id, 'CA' from park where park_name = 'Disneyland'
+-- Above = shorthand version of the values line 
+
+select * from park_state where park_id = '64';
+
+select * from park_state;
+
 
 
 
@@ -14,16 +28,30 @@
 
 -- Change the state nickname of California to "The Happiest Place on Earth."
 
+update state set state_nickname = 'The Happiest Place on Earth' 
+where state_nickname = 'CA';
+
 
 -- Increase the population of California by 1,000,000.
 
 
 -- Change the capital of California to Anaheim.
 
+update state set capital = (select city_id from city where city_name = 'Anaheim' and state_abbreviation = 'CA') where state_name = 'California';
+
+select * from state where state_name = 'California';
+
 
 -- Change California's nickname back to "The Golden State", reduce the population by 1,000,000, and change the capital back to Sacramento.
 
+update state
+set state_nickname = 'Golden State', 
+population -= 100000, 
+capital = (select city_id from city where city_name = 'Sacramento' and state_abbreviation = 'CA')
+where state_name = 'California'
 
+select * from state where state_abbreviation = 'CA';
+select * from city;
 
 -- DELETE
 
@@ -50,6 +78,8 @@
 
 -- NOT NULL constraint
 -- Try adding Smallville, KS to the city table without specifying its population or area.
+
+
 
 
 -- DEFAULT constraint
