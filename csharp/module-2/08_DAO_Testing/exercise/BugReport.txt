@@ -1,43 +1,50 @@
 Bug 1
 -----
-Test that demonstrates problem:
+Test that demonstrates problem: GetTimeSheetsByProjectID
 
-Expected output:
+Expected output: Returns count of 3 after inputting Project ID of 1
 
-Actual output:
+Actual output: Returns count of 2 
 
 How did you fix this bug?
+
+I altered the clause in sql command tfrom (employee_id = @project_id to project_id = @project_id)
+
 
 
 Bug 2
 -----
-Test that demonstrates problem:
+Test that demonstrates problem: UpdatedTimeSheetHasExpectedValuesWhenRetrieved
 
-Expected output:
+Expected output: After setting is_Billable to true, expect my retrieved variable to also be true 
 
-Actual output:
+Actual output: returns an error statement
 
 How did you fix this bug?
+
+To SqlCommand, added to set statement: (is_Billable = @is_billable)
+
 
 
 Bug 3
 -----
-Test that demonstrates problem:
+Test that demonstrates problem: GetBillableHours_ReturnsCorrectTotal
 
-Expected output:
+Expected output: 
 
-Actual output:
+Actual output: 
 
 How did you fix this bug?
+
 
 
 Bug 4
 -----
-Test that demonstrates problem:
+Test that demonstrates problem: 
 
 Expected output:
 
 Actual output:
 
-How did you fix this bug?
+How did you fix this bug? 
 

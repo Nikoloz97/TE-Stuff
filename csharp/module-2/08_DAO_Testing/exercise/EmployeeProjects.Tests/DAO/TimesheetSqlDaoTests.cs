@@ -27,55 +27,101 @@ namespace EmployeeProjects.Tests.DAO
         [TestMethod]
         public void GetTimesheet_ReturnsCorrectTimesheetForId()
         {
-            Assert.Fail();
+            Timesheet timesheet = dao.GetTimesheet(1);
+            AssertTimesheetsMatch(TIMESHEET_1, timesheet);
         }
 
         [TestMethod]
         public void GetTimesheet_ReturnsNullWhenIdNotFound()
         {
-            Assert.Fail();
+            Timesheet timesheet = dao.GetTimesheet(5);
+            Assert.IsNull(timesheet);
         }
 
         [TestMethod]
         public void GetTimesheetsByEmployeeId_ReturnsListOfAllTimesheetsForEmployee()
         {
-            Assert.Fail();
+            IList <Timesheet> actualList = dao.GetTimesheetsByEmployeeId(2);
+
+            IList<Timesheet> expectedList = new List<Timesheet>();
+            expectedList.Add(TIMESHEET_4);
+
+            Assert.AreEqual(expectedList.Count, actualList.Count);
+
         }
 
         [TestMethod]
         public void GetTimesheetsByProjectId_ReturnsListOfAllTimesheetsForProject()
         {
-            Assert.Fail();
+            IList<Timesheet> actualList = dao.GetTimesheetsByProjectId(1);
+
+            IList<Timesheet> expectedList = new List<Timesheet>();
+            expectedList.Add(TIMESHEET_1);
+            expectedList.Add(TIMESHEET_2);
+            expectedList.Add(TIMESHEET_3);
+
+
+            Assert.AreEqual(expectedList.Count, actualList.Count);
         }
 
         [TestMethod]
         public void CreateTimesheet_ReturnsTimesheetWithIdAndExpectedValues()
         {
-            Assert.Fail();
+
+            Timesheet newTimeSheet = new Timesheet(0, 2, 2, DateTime.Parse("2021-01-01"), 1.0M, true, "Timesheet 5");
+            Timesheet timesheet = dao.CreateTimesheet(newTimeSheet);
+
+            Assert.IsTrue(timesheet.TimesheetId > 0);
+
+            newTimeSheet.TimesheetId = timesheet.TimesheetId;
+            AssertTimesheetsMatch(newTimeSheet, timesheet);
+
         }
 
         [TestMethod]
         public void CreatedTimesheetHasExpectedValuesWhenRetrieved()
         {
-            Assert.Fail();
+            Timesheet newTimeSheet = new Timesheet(0, 2, 2, DateTime.Parse("2021-01-01"), 1.0M, true, "Timesheet 5");
+            Timesheet timesheet = dao.CreateTimesheet(newTimeSheet);
+
+            newTimeSheet.TimesheetId = timesheet.TimesheetId;
+
+            Timesheet retrievedTimesheet = dao.GetTimesheet(timesheet.TimesheetId);
+
+            AssertTimesheetsMatch(newTimeSheet, retrievedTimesheet);
+
         }
 
         [TestMethod]
         public void UpdatedTimesheetHasExpectedValuesWhenRetrieved()
         {
-            Assert.Fail();
+            Timesheet timesheetToUpdate = dao.GetTimesheet(2);
+
+            timesheetToUpdate.IsBillable = true;
+            dao.UpdateTimesheet(timesheetToUpdate);
+
+            Timesheet retrievedTimesheet = dao.GetTimesheet(2);
+
+            AssertTimesheetsMatch(timesheetToUpdate, retrievedTimesheet);
+
         }
 
         [TestMethod]
         public void DeletedTimesheetCantBeRetrieved()
         {
-            Assert.Fail();
+            dao.DeleteTimesheet(3);
+
+            Timesheet retrivedTimeSheet = dao.GetTimesheet(3);
+
+            Assert.IsNull(retrivedTimeSheet);
         }
 
         [TestMethod]
         public void GetBillableHours_ReturnsCorrectTotal()
         {
-            Assert.Fail();
+            decimal billableHours = dao.GetBillableHours(1, 1);
+
+            Assert.AreEqual(2.5M, billableHours);
         }
 
         private void AssertTimesheetsMatch(Timesheet expected, Timesheet actual)

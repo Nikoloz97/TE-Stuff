@@ -20,7 +20,15 @@ namespace HotelApp.Services
 
         public List<Hotel> GetHotels()
         {
-            throw new NotImplementedException();
+            RestRequest request = new RestRequest("hotels");
+            IRestResponse<List<Hotel>> response = client.Get<List<Hotel>>(request);
+            if (!response.IsSuccessful)
+            {
+                throw new HttpRequestException("Something went wrong from the server!");
+            }
+
+            return response.Data;
+
         }
 
         public List<Review> GetReviews()

@@ -25,19 +25,29 @@ namespace USCitiesAndParks.Tests
         [TestMethod]
         public void GetPark_ReturnsCorrectParkForId()
         {
-            Assert.Fail();
+            Park park = dao.GetPark(2);
+            AssertParksMatch(PARK_2, park);
         }
 
         [TestMethod]
         public void GetPark_ReturnsNullWhenIdNotFound()
         {
-            Assert.Fail();
+            Park park = dao.GetPark(6000);
+            Assert.IsNull(park);
         }
 
         [TestMethod]
         public void GetParksByState_ReturnsAllParksForState()
         {
-            Assert.Fail();
+            Park testPark = new Park(0, "Test Park", DateTime.Now, 900, true);
+
+            Park newParkFromDB = dao.CreatePark(testPark);
+
+            Assert.IsTrue(newParkFromDB.ParkId == 4);
+
+            testPark.ParkId = newParkFromDB.ParkId;
+            AssertParksMatch(testPark, newParkFromDB);
+
         }
 
         [TestMethod]
@@ -61,13 +71,25 @@ namespace USCitiesAndParks.Tests
         [TestMethod]
         public void UpdatedParkHasExpectedValuesWhenRetrieved()
         {
-            Assert.Fail();
+            Park parkToUpdate = dao.GetPark(2);
+
+            parkToUpdate.HasCamping = true;
+
+            dao.UpdatePark(parkToUpdate);
+
+            Park retrievedPark = dao.GetPark(2);
+
+            AssertParksMatch(parkToUpdate, retrievedPark);
         }
 
         [TestMethod]
         public void DeletedParkCantBeRetrieved()
         {
-            Assert.Fail();
+            dao.DeletePark(3);
+
+            Park retrievedPark = dao.GetPark(3);
+
+            Assert.IsNull(retrievedPark);
         }
 
         [TestMethod]
