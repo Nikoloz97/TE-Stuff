@@ -111,6 +111,15 @@
       "roomsAvailable": 75,
       "costPerNight": 185,
       "coverImage": "greektown-detroit.webp"
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
+    },
+    {
+      "id": 10
     }
   ],
   "reviews": [
