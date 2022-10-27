@@ -33,11 +33,11 @@ namespace HotelReservationsClient.Services
             string url;
             if (hotelId != 0)
             {
-                url = $"hotels/{hotelId}/reservations";
+                url = $"hotels/{hotelId}/reservations"; // get reservation just for that hotelID
             }
             else
             { 
-                url = "reservations";
+                url = "reservations"; // get reservations for all hotels
             }
 
             RestRequest request = new RestRequest(url);
@@ -58,17 +58,37 @@ namespace HotelReservationsClient.Services
 
         public Reservation AddReservation(Reservation newReservation)
         {
-            throw new NotImplementedException();
+            RestRequest request = new RestRequest("reservations");
+            request.AddJsonBody(newReservation);
+            IRestResponse<Reservation> response = client.Post<Reservation>(request);
+
+            CheckForError(response, $"Add reservation for {newReservation.HotelId}");
+
+            return response.Data;
+
         }
 
         public Reservation UpdateReservation(Reservation reservationToUpdate)
         {
-            throw new NotImplementedException();
+            RestRequest request = new RestRequest($"reservations/{reservationToUpdate.Id}");
+            request.AddJsonBody(reservationToUpdate);
+            IRestResponse<Reservation> response = client.Put<Reservation>(request);
+
+            CheckForError(response, $"Updated reservation for {reservationToUpdate.HotelId}");
+
+            return response.Data;
+
         }
 
         public bool DeleteReservation(int reservationId)
         {
-            throw new NotImplementedException();
+            RestRequest request = new RestRequest($"reservations/{reservationId}");
+
+            IRestResponse response = client.Delete<Reservation>(request);
+
+            CheckForError(response, $"Deleted reservation for person with reservation ID: {reservationId}");
+
+            return true;
         }
 
         /// <summary>

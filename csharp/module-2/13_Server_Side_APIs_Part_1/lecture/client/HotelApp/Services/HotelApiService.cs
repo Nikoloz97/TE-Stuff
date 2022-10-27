@@ -27,6 +27,21 @@ namespace HotelReservationsClient.Services
             return response.Data;
         }
 
+
+
+        // Get a reservation by ID
+        public Reservation GetReservation(int reservationId)
+        {
+            RestRequest request = new RestRequest($"reservations/{reservationId}");
+            IRestResponse<Reservation> response = client.Get<Reservation>(request);
+
+            CheckForError(response, $"Get reservation {reservationId}");
+            return response.Data;
+        }
+
+
+
+        // Get reservations based on hotel ID
         public List<Reservation> GetReservations(int hotelId = 0)
         {
             string url;
@@ -46,14 +61,8 @@ namespace HotelReservationsClient.Services
             return response.Data;
         }
 
-        public Reservation GetReservation(int reservationId)
-        {
-            RestRequest request = new RestRequest($"reservations/{reservationId}");
-            IRestResponse<Reservation> response = client.Get<Reservation>(request);
 
-            CheckForError(response, $"Get reservation {reservationId}");
-            return response.Data;
-        }
+  
 
         public Reservation AddReservation(Reservation newReservation)
         {

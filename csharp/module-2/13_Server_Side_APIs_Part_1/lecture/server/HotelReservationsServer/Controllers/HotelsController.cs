@@ -5,13 +5,15 @@ using HotelReservations.DAO;
 
 namespace HotelReservations.Controllers
 {
-    [Route("hotels")]
+    [Route("hotels")] // left = shortcut path for: "localhost: 44322/hotels" (with ISS express)...
+                      // ...or if starting manually  "localhost:5001/hotels" (w/out ISS express)
+    // alternative: Route([controller])
     [ApiController]
     public class HotelsController : ControllerBase
     {
         private static IHotelDao hotelDao;
 
-        public HotelsController()
+        public HotelsController() // our constructor
         {
             if (hotelDao == null)
             {
@@ -25,7 +27,7 @@ namespace HotelReservations.Controllers
             return hotelDao.List();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}")] // gets us: hotels/:{id}
         public ActionResult<Hotel> GetHotel(int id)
         {
             Hotel hotel = hotelDao.Get(id);
@@ -39,5 +41,7 @@ namespace HotelReservations.Controllers
                 return NotFound();
             }
         }
+
+
     }
 }

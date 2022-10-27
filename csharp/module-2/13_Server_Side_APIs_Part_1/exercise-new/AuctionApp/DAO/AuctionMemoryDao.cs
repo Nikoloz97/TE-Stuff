@@ -28,6 +28,10 @@ namespace AuctionApp.DAO
         public List<Auction> List()
         {
             return auctions;
+
+
+
+
         }
 
         public Auction Get(int id)
