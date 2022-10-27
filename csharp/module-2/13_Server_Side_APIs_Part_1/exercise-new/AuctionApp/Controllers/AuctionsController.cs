@@ -40,16 +40,12 @@ namespace AuctionApp.Controllers
             {
                 return dao.SearchByPrice(currentBid_lte);
             }
-            if (dao.List().Count > 0)
+            else
             {
          
                 return dao.List();
             }
-            else 
-            {
-                List<Auction> emptyList = new List<Auction>();
-                return emptyList;
-            }
+            
 
         }
 
