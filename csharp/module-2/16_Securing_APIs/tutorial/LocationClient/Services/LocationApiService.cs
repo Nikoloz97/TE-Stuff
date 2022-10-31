@@ -1,5 +1,6 @@
 ﻿using LocationClient.Models;
 using RestSharp;
+using RestSharp.Authenticators;
 using System.Collections.Generic;
 
 namespace LocationClient.Services
@@ -11,6 +12,7 @@ namespace LocationClient.Services
         public List<Location> GetAllLocations()
         {
             RestRequest request = new RestRequest("locations");
+
             IRestResponse<List<Location>> response = client.Get<List<Location>>(request);
 
             CheckForError(response, "Get all locations");

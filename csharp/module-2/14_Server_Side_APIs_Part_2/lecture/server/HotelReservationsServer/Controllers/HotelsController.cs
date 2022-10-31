@@ -43,6 +43,8 @@ namespace HotelReservations.Controllers
             List<Hotel> filteredHotels = new List<Hotel>();
 
             List<Hotel> hotels = ListHotels();
+
+
             // return hotels that match state
             foreach (Hotel hotel in hotels)
             {

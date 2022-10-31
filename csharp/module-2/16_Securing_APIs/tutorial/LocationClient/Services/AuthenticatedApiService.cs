@@ -29,12 +29,17 @@ namespace LocationClient.Services
 
             CheckForError(response, "Login");
             user.Token = response.Data.Token;
+            client.Authenticator = new JwtAuthenticator(user.Token);
+
+
             return true;
         }
 
         public void Logout()
         {
             user = new ApiUser();
+
+            client.Authenticator = null;
         }
 
         /// <summary>

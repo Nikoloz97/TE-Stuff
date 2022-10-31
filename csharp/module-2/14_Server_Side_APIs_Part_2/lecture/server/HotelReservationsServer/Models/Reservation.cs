@@ -7,6 +7,8 @@ namespace HotelReservations.Models
     {
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "The field 'HotelId' is required.")]
+
         public int HotelId { get; set; }
 
         public string FullName { get; set; }

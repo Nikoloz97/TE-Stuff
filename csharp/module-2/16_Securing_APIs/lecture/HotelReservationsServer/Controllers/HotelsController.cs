@@ -2,11 +2,13 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using HotelReservations.Models;
 using HotelReservations.DAO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HotelReservations.Controllers
 {
     [Route("hotels")]
     [ApiController]
+    [Authorize]
     public class HotelsController : ControllerBase
     {
         private IHotelDao hotelDao;
@@ -16,12 +18,15 @@ namespace HotelReservations.Controllers
             this.hotelDao = hotelDao;
         }
 
+
+        [AllowAnonymous]
         [HttpGet()]
         public List<Hotel> ListHotels()
         {
             return hotelDao.List();
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet("{id}")]
         public ActionResult<Hotel> GetHotel(int id)
         {
