@@ -16,7 +16,7 @@ ul {
   padding: 0;
 }
 
-.aside {
+aside {
   width: 200px;
   position: fixed;
   top: 0;
@@ -27,7 +27,7 @@ ul {
   border-color: rgba(0, 173, 238, 0.4);
 }
 
-.aside li {
+aside li {
   text-align: center;
   text-transform: uppercase;
   border-bottom: 1px solid rgba(0, 173, 238, 0.4);
@@ -37,7 +37,7 @@ ul {
   padding: 10px;
 }
 
-.aside a {
+aside a {
   color: #00ADEE;
   font-weight: bold;
 }
@@ -45,18 +45,18 @@ ul {
 #home {
   text-decoration: underline;
 }
-.aside a {
+aside a {
   text-decoration: none;
 }
 
-.TE_logo {
+aside img {
   /* Image now takes up whole width of parent (aside) */
   display: block;
   /* Centers the image */
   margin: auto;
   width: 120px;
 }
-.header_logo {
+header img {
   height: 100px;
   margin-bottom: 30px;
 }
