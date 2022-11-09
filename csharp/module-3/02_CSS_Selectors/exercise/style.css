@@ -15,3 +15,54 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+.aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  border-right: solid;
+  border-width: 1px;
+  border-color: rgba(0, 173, 238, 0.4);
+  width: 200px;
+}
+
+.aside li {
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(0, 173, 238, 0.4);
+  width: 80%;
+  margin: auto;
+  list-style: none;
+  padding: 10px;
+}
+
+.aside a {
+  color: #00ADEE;
+  font-weight: bold;
+}
+
+#home {
+  text-decoration: underline;
+}
+.aside a {
+  text-decoration: none;
+}
+
+.TE_logo {
+  /* Image now takes up whole width of parent (aside) */
+  display: block;
+  /* Centers the image */
+  margin: auto;
+  width: 120px;
+}
+
+main {
+  margin-left: 200px;
+}
+
+
+
+
+
+
