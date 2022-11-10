@@ -76,5 +76,34 @@ namespace DotnetMod1PracticeProblems
             return false;
         }
 
+
+
+
+
+        //pseudocode: 
+        //1. Create a foreach loop for Dict_1
+        //2. If key fo Dict_1 matches with any Key in Dict_2 -> add its value to Dict_1 
+        //3. Else, create a new key-value pair for Dict_1
+        public Dictionary<string, int> DictionaryMerger (Dictionary<string, int> Dict_1, Dictionary<string, int> Dict_2)
+        {
+            
+            foreach (string keyItem in Dict_2.Keys)
+            {
+                if (Dict_1.ContainsKey(keyItem))
+                {
+                    Dict_1[keyItem] += Dict_2[keyItem];
+                }
+                else
+                {
+                    Dict_1.Add(keyItem, Dict_2[keyItem]);
+                }
+            }
+            return Dict_1;
+
+        }
+
+        Dictionar
+
+
     }
 }
