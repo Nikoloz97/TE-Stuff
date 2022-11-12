@@ -6,9 +6,11 @@ body {
 
 .container {
   background-color: #F0F0F0;
+  display: flex;
 }
 
 .box {
+  flex-grow: 1;
   padding: 40px 55px;
   margin: 15px 0;
   background-color: #00AFEF;
@@ -19,5 +21,6 @@ body {
 
 .box:nth-child(2),
 .box:nth-child(4) {
+  flex-grow: 2;
   background-color: #005270;
 }
