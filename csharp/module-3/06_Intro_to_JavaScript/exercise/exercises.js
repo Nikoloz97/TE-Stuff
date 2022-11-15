@@ -1,17 +1,19 @@
-﻿/*
-1. **sumDouble** Given two int values, return their sum. Unless the two values are the 
-    same, then return double their sum.
+﻿
+// 1. **sumDouble** Given two int values, return their sum. Unless the two values are the 
+//     same, then return double their sum.
 
-		sumDouble(1, 2) → 3
-		sumDouble(3, 2) → 5
-		sumDouble(2, 2) → 8
+// 		sumDouble(1, 2) → 3
+// 		sumDouble(3, 2) → 5
+// 		sumDouble(2, 2) → 8
 
 		function sumDouble(x, y) {
-			// do logic here
-			// return result;
+			if (x == y) {
+				return (x + y) * 2;
+			}
 			return x + y;
         }
-*/
+
+
 
 /*
 2. **hasTeen** We'll say that a number is "teen" if it is in the range 13..19 inclusive. 
@@ -22,6 +24,21 @@
 		hasTeen(20, 10, 13) → true
 */
 
+
+const teenNumbers = [13, 14, 15, 16, 17, 18, 19]
+
+function hasTeen (intOne, intTwo, intThree) {
+	
+	for (const number of teenNumbers) {
+		if (intOne == number || intTwo == number || intThree == number) {
+			return true;
+		}
+		
+	}
+	return false;
+}
+
+
 /* 
 3. **lastDigit** Given two non-negative int values, return true if they have the same 
     last digit, such as with 27 and 57.
@@ -30,6 +47,14 @@
 		lastDigit(6, 17) → false
 		lastDigit(3, 113) → true
 */
+
+function lastDigit (first, second) {
+	if (first[first.length - 1] == second[second.length - 1]) {
+		return true;
+	}
+	return false;
+}
+
 
 /*
 4. **seeColor** Given a string, if the string begins with "red" or "blue" return that color 
@@ -40,6 +65,19 @@
         seeColor("blueTimes") → "blue"
 */
 
+function seeColor (string) {
+	const red = string.slice(0,3);
+	const blue = string.slice(0,4);
+
+	if (red == "red") {
+		return "red"
+	}
+	if (blue == "blue") {
+		return "blue"
+	}
+	return "";
+}
+
 /*
 5. **oddOnly** Write a function that given an array of integer of any length, removes
     the even numbers, and returns a new array of just the the odd numbers.
@@ -47,6 +85,18 @@
 		oddOnly([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) → [1, 3, 5, 7, 9, 11];
 		oddOnly([2, 4, 8, 32, 256]); → []
 */
+
+function oddOnly (numbArray) {
+	let newArray = [];
+	for (const numb of numbArray) {
+		if (!(numb % 2 === 0)) {
+			newArray.push(numb);
+		}
+	}
+	return newArray;
+}
+
+
 
 /*
 6. **frontAgain** Given a string, return true if the first 2 chars in the string also appear 
@@ -56,6 +106,15 @@
 		frontAgain("edit") → false
 		frontAgain("ed") → true
 */
+
+function frontAgain (string) {
+	const firstTwo = string.slice(0,2);
+	const lastTwo = string.slice(string.length - 2, string.length);
+	if (firstTwo == lastTwo) {
+		return true;
+	}
+	return false;
+}
 
 /*
 7. **cigarParty** When squirrels get together for a party, they like to have cigars. 
@@ -68,6 +127,20 @@ or false otherwise.
 		cigarParty(50, false) → true
 		cigarParty(70, true) → true
 */
+
+function isBetween(x, lower, upper) {
+	return (x >= lower && x <= upper);
+}
+
+function cigarParty(numb, isWeekend) {
+	let isSuccessful = isBetween(numb, 40, 60);
+	if (isWeekend && numb >= 40) {
+		isSuccessful = true;
+	}
+	return isSuccessful;
+}
+
+
 
 /*
 8. **fizzBuzz** Given a number, return a value according to the following rules:

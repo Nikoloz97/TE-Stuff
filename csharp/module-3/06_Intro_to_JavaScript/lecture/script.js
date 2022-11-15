@@ -10,8 +10,19 @@
  */
 function variables() {
   // Declares a variable where the value cannot be changed
+  const daysPerWeek = 7;
+  console.log(`There are ${daysPerWeek} days in a week`)
+
   // Declares a variable those value can be changed
+  let daysPerMonth = 30;
+
+
   // Declares a variable that will always be an array
+  const daysOfWeek = [
+    "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"
+  ];
+  console.table(daysOfWeek);
+
 }
 
 /**
@@ -23,6 +34,11 @@ function variables() {
 function printParameters(param1, param2) {
   console.log(`The value of param1 is ${param1}`);
   console.log(`The value of param2 is ${param2}`);
+}
+
+function addStuff (param) {
+  const Numb = 5;
+  return Numb + param
 }
 
 /**
@@ -56,9 +72,7 @@ function falsy(x) {
 
 /**
  *  Objects are simple key-value pairs
-    - values can be primitive data types
-    - values can be arrays
-    - or they can be functions
+    - values can be primitive data, arrays, or functions
 */
 function objects() {
   const person = {
@@ -113,6 +127,14 @@ function mathFunctions() {
   console.log("Math.floor(1.99) : " + Math.floor(1.99));
   console.log("Math.ceil(1.01) : " + Math.ceil(1.01));
   console.log("Math.random() : " + Math.random());
+}
+
+function addFive (param) {
+  return 5 + param
+}
+
+function addTen(thing) {
+  return addFive(thing) + 5
 }
 
 /*

@@ -28,6 +28,9 @@ function printToConsole(value) {
  * @param {number} secondParameter the second parameter to multiply
  */
 
+
+
+
 /**
  * This version makes sure that no parameters are ever missing. If
  * someone calls this function without parameters, we default the
@@ -99,9 +102,20 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  * @param {number[]} numbersToSum numbers to add up
  * @returns {number} sum of all the numbers
  */
-function sumAllNumbers(numbersToSum) {
-  return numbersToSum.reduce();
+
+
+ function addTwoNumbersTogether (currentSum, nextNumb) {
+  return currentSum + nextNumb;
 }
+
+function sumAllNumbers(numbersToSum) {
+  return numbersToSum.reduce((sum, nextNumber) => {
+    return sum + nextNumber
+  
+  });
+}
+
+
 
 /**
  * Takes an array and returns a new array of only numbers that are
@@ -111,4 +125,8 @@ function sumAllNumbers(numbersToSum) {
  * @returns {number[]} a new array with only those numbers that are
  *   multiples of 3
  */
-function allDivisibleByThree(numbersToFilter) {}
+
+function allDivisibleByThree(numbersToFilter) {
+
+  return numbersToFilter.filter((number) => {return number % 3 === 0});
+}
