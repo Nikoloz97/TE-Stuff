@@ -33,7 +33,7 @@ function hasTeen (intOne, intTwo, intThree) {
 		if (intOne == number || intTwo == number || intThree == number) {
 			return true;
 		}
-		
+		// **return false;
 	}
 	return false;
 }
@@ -49,7 +49,7 @@ function hasTeen (intOne, intTwo, intThree) {
 */
 
 function lastDigit (first, second) {
-	if (first[first.length - 1] == second[second.length - 1]) {
+	if (first.toString()[first.toString().length - 1] == second.toString()[second.toString().length - 1]) {
 		return true;
 	}
 	return false;
@@ -92,6 +92,7 @@ function oddOnly (numbArray) {
 		if (!(numb % 2 === 0)) {
 			newArray.push(numb);
 		}
+		// **return newArray
 	}
 	return newArray;
 }
@@ -136,6 +137,7 @@ function cigarParty(numb, isWeekend) {
 	let isSuccessful = isBetween(numb, 40, 60);
 	if (isWeekend && numb >= 40) {
 		isSuccessful = true;
+		// **isSuccessful == true;
 	}
 	return isSuccessful;
 }
@@ -156,6 +158,18 @@ In all other cases return the original number.
 	fizzBuzz(8) → 8
 */
 
+function fizzBuzz (number) {
+	if (number % 3 == 0 && number % 5 == 0) {
+		return "FizzBuzz"
+	}
+	else if (number % 3 == 0) {
+		return "Fizz"
+	}
+	else if (number % 5 == 0) {
+		return "Buzz"
+	}
+	return number;
+}
 /*
 9. **filterEvens** Write a function that filters an array to only include even numbers.
 
@@ -165,6 +179,16 @@ In all other cases return the original number.
 	filterEvens([100, 8, 21, 24, 62, 9, 7]) → [100, 8, 24, 62]
 */
 
+function filterEvens (array) {
+	let newArray = [];
+	for (const item of array) {
+		if (item % 2 == 0) {
+			newArray.push(item)
+		} 
+	}
+	return newArray;
+}
+
 /*
 10. **filterBigNumbers** Write a function that filters numbers greater than or equal to 100.
 
@@ -172,6 +196,16 @@ In all other cases return the original number.
 	filterBigNumbers([3, 2, 7, 1, -100, -120]) → []
 	filterBigNumbers([]) → []
 */
+
+function filterBigNumbers (array) {
+	let newArray = [];
+	for (const item of array) {
+		if (item >= 100) {
+			newArray.push(item)
+		} 
+	}
+	return newArray;
+}
 
 /*
 11. **filterMultiplesOfX** Write a function to filter numbers that are a multiple of a 
@@ -181,15 +215,29 @@ parameter, `x` passed in.
 	filterMultiplesOfX([3, 5, 10, 20, 18, 21, 42, 67], 5) → [5, 10, 20]
 */
 
-/*
-12. **createObject** Write a function that creates an object with a property called 
-firstName, lastName, and age. Populate the properties with your values.
-
-	createObject() →
-
-	{
-		firstName,
-		lastName,
-		age
+function filterMultiplesOfX (array, numb) {
+	let newArray = [];
+	for (const item of array) {
+		if (item % numb == 0) {
+			newArray.push(item)
+		} 
 	}
-*/
+	return newArray;
+}
+
+
+
+// 12. **createObject** Write a function that creates an object with a property called 
+// firstName, lastName, and age. Populate the properties with your values.
+
+	function createObject(){
+
+		const object = {
+			firstName: 'Nick',
+			lastName: 'Gotsy',
+			age: 24
+		};
+		return object;
+	}
+
+
