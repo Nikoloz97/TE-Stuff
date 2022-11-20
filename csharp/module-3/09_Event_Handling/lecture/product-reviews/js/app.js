@@ -66,16 +66,66 @@ setPageDescription();
 // Display all of the product reviews on our page.
 displayReviews();
 
+
+//1. Grab "target"
+const descPgrph = document.querySelector('.description');
+//2. "Subscribe" w/ event listener
+descPgrph.addEventListener('click', toggleDescriptionEdit);
+//3. Event handler
+const inputDesc = document.getElementById('inputDesc');
+inputDesc.addEventListener('keyup', (event) =>
+{
+  if (event.key === 'Enter') {
+    
+    exitDescriptionEdit(event.target, true)
+  }
+
+
+  if (event.key === 'Escape') {
+    exitDescriptionEdit(event.target, false)
+  }
+});
+
+// grab addReview button...
+const addReviewBtn = document.getElementById('btnToggleForm');
+
+// once clicked, toggle between addReview -> hide form -> add Review -> etc...
+addReviewBtn.addEventListener('click', showHideForm);
+
+// grab saveReview button...
+const saveReviewBtn = document.getElementById('btnSaveReview');
+
+// once clicked, add that review to 
+saveReviewBtn.addEventListener('click', 
+(event) => {
+    // Not sure what preventDefault does??
+      event.preventDefault();
+      saveReview();
+    });
+
+
+
+
 /**
  * Hide the description and show the text box.
  *
  * @param {Element} desc the element containing the description
  */
-function toggleDescriptionEdit(desc) {
+function toggleDescriptionEdit() {
+  //grab description paragraph
+  const desc = document.querySelector('.description');
+
+  // Go to next element in HTML (input)
   const textBox = desc.nextElementSibling;
+
+  //Whatever input currently has in it = whatever was in paragraph
   textBox.value = desc.innerText;
+
+  // d-none = default from bootstrap (gets rid of it from DOM)
   textBox.classList.remove('d-none');
   desc.classList.add('d-none');
+
+  // add fancy blue outline over input when user clicks on it
   textBox.focus();
 }
 
@@ -102,12 +152,18 @@ function showHideForm() {
   const form = document.querySelector('form');
   const btn = document.getElementById('btnToggleForm');
 
+  // If add Review is clicked on -> Hide form
   if (form.classList.contains('d-none')) {
+    //display the form...
     form.classList.remove('d-none');
     btn.innerText = 'Hide Form';
     document.getElementById('name').focus();
-  } else {
+  } 
+
+  // If Hide Form is clicked on -> back to AddReview
+  else {
     resetFormValues();
+    //get rid of form...
     form.classList.add('d-none');
     btn.innerText = 'Add Review';
   }
@@ -129,4 +185,18 @@ function resetFormValues() {
 /**
  * Save the review that was added using the add review form.
  */
-function saveReview() {}
+function saveReview() {
+  let name = document.getElementById('name');
+  let title = document.getElementById('title');
+  let rating = document.getElementById('rating');
+  let review = document.getElementById('review');
+
+  const newReview = {
+    reviewer: name.value,
+    title: title.value,
+    review: review.value,
+    rating: rating.value
+  }
+
+  displayReview(newReview);
+}

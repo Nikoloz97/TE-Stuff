@@ -13,6 +13,7 @@ const groceries = [
   { id: 10, name: 'Tea', completed: false }
 ];
 
+
 /**
  * This function will get a reference to the title and set its text to the value
  * of the pageTitle variable that was set above.
@@ -21,6 +22,9 @@ function setPageTitle() {
   const title = document.getElementById('title');
   title.innerText = pageTitle;
 }
+
+
+
 
 /**
  * This function will loop over the array of groceries that was set above and add them to the DOM.
@@ -36,3 +40,45 @@ function displayGroceries() {
     ul.appendChild(li);
   });
 }
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  setPageTitle();
+  displayGroceries();
+
+  const listItems = document.querySelectorAll('li');
+  
+  listItems.forEach((listItem) => {
+      listItem.addEventListener('click', () => {
+        if (!listItem.classList.contains('completed')) {
+          listItem.classList.add('completed');
+          listItem.querySelector('i').classList.add('completed');
+        }
+    });
+
+    listItem.addEventListener('dblclick', () => {
+      if (listItem.classList.contains('completed')) {
+        listItem.removeAttribute('class');
+        listItem.querySelector('i').classList.remove('completed');
+      }
+    });
+  });
+
+    // Replace here...
+    const markBtn = document.getElementById('toggleAll');
+    markBtn.addEventListener('click', () => {
+      listItems.forEach((item) => {
+        item.classList.toggle('completed');
+        item.lastChild.classList.toggle('completed');
+        if (item.classList.contains('completed')) {
+          markBtn.textContent = "Mark All Incomplete";
+          
+        } else {
+          markBtn.textContent = "Mark All Complete";
+          
+        }
+      });
+    });
+
+  });
