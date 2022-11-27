@@ -15,7 +15,7 @@
       <tbody>
         <tr>
           <td>
-            <input type="checkbox" id="selectAll" />
+            <input type="checkbox" id="selectAll" v-on:click="counter += 1; if (counter % 2 === 0) {checkAllBoxes} else{uncheckAllBoxes}" />
           </td>
           <td>
             <input type="text" id="firstNameFilter" v-model="filter.firstName" />
@@ -44,7 +44,8 @@
           v-bind:class="{ disabled: user.status === 'Disabled' }"
         >
           <td>
-            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" />
+            <!-- **Step 3: "Bind the checked value to if the user's ID is in the selectedUserID's array" ?? (what does this mean)-->
+            <input type="checkbox" class="userCheck" v-bind:id="user.id" v-bind:value="user.id" v-on:click="addRemoveToSelectedUserIds($event); checkSelectAll;" />
           </td>
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
@@ -52,36 +53,40 @@
           <td>{{ user.emailAddress }}</td>
           <td>{{ user.status }}</td>
           <td>
-            <button class="btnEnableDisable">Enable or Disable</button>
+            <!-- I got rid of this button and made two buttons instead -->
+            <!-- <button class="btnEnableDisable">Enable or Disable</button> -->
+            <!-- **Step 2: Flipstatus function (change user's status from active -> disabled) doesn't work... -->
+            <button v-show = "user.status === 'Disabled'" v-bind:id="user.id" v-on:click="flipStatus($event)">Enable</button>
+            <button v-show = "user.status === 'Active'" v-bind:id="user.id" v-on:click="flipStatus($event)">Disable</button>
           </td>
         </tr>
       </tbody>
     </table>
 
     <div class="all-actions">
-      <button>Enable Users</button>
-      <button>Disable Users</button>
-      <button>Delete Users</button>
+      <button v-bind:disabled="actionButtonDisabled" v-on:click="enableSelectedUsers">Enable Users</button>
+      <button v-bind:disabled="actionButtonDisabled" v-on:click="disableSelectedUsers">Disable Users</button>
+      <button v-bind:disabled="actionButtonDisabled"  v-on:click="deleteSelectedUsers">Delete Users</button>
     </div>
 
-    <button>Add New User</button>
+    <button v-on:click="showForm += 1">Add New User</button>
 
-    <form id="frmAddNewUser">
+    <form id="frmAddNewUser" v-show="showForm % 2 != 0" v-on:submit.prevent="saveUser">
       <div class="field">
         <label for="firstName">First Name:</label>
-        <input type="text" name="firstName" />
+        <input type="text" name="firstName" v-model="newUser.firstName"/>
       </div>
       <div class="field">
         <label for="lastName">Last Name:</label>
-        <input type="text" name="lastName" />
+        <input type="text" name="lastName" v-model="newUser.lastName"/>
       </div>
       <div class="field">
         <label for="username">Username:</label>
-        <input type="text" name="username" />
+        <input type="text" name="username" v-model="newUser.username" />
       </div>
       <div class="field">
         <label for="emailAddress">Email Address:</label>
-        <input type="text" name="emailAddress" />
+        <input type="text" name="emailAddress"  v-model="newUser.emailAddress" />
       </div>
       <button type="submit" class="btn save">Save User</button>
     </form>
@@ -102,7 +107,7 @@ export default {
       },
       nextUserId: 7,
       newUser: {
-        id: null,
+        id: this.nextUserId,
         firstName: "",
         lastName: "",
         username: "",
@@ -158,12 +163,104 @@ export default {
           emailAddress: "msmith@foo.com",
           status: "Disabled"
         }
-      ]
+      ],
+      showForm: 0,
+      selectedUserIDs: [],
+      counter: 1
     };
   },
   methods: {
     getNextUserId() {
       return this.nextUserId++;
+    },
+    clearForm() {
+     return this.newUser = {
+        id: this.nextUserId,
+        firstName: "",
+        lastName: "",
+        username: "",
+        emailAddress: "",
+        status: "Active"
+      }
+    },
+    // **Step 1: function works fine, but for each user that gets added, their id = "undefined"... (cypress)
+    saveUser() {
+      this.users.push(this.newUser);
+      this.getNextUserId()
+      this.clearForm()
+    },
+    flipStatus(event) {
+      let filteredUser = this.users.filter((user) => {return user.id === event.target.id })
+      if (filteredUser.status === 'Active') {
+        filteredUser.status === 'Disabled';
+        
+      } else {
+        filteredUser.status === 'Active'
+      }
+    },
+    clearCheckBox() {
+      let checkBoxes = document.querySelectorAll('input[type=checkbox]');
+      checkBoxes.forEach((checkbox) => {
+        checkbox.checked = false;
+      });
+
+    },
+    enableSelectedUsers() {
+      this.selectedUserIDs.forEach((userID) => {
+        this.users.forEach((user) => {
+          if (user.id === userID) {
+            user.status === "Active"
+          }
+        });
+        this.clearCheckBox();
+      });
+    },
+    disableSelectedUsers() {
+      this.selectedUserIDs.forEach((userID) => {
+        this.users.forEach((user) => {
+          if (user.id === userID) {
+            user.status === "Disabled"
+          }
+        });
+        this.clearCheckBox();
+      });
+    },
+    deleteSelectedUsers() {
+      this.selectedUserIDs.forEach((userID) => {
+        this.users.forEach((user) => {
+          if (user.id === userID) {
+
+           const updatedUsersArray = this.users.splice(this.users.indexOf(userID), 1);
+           this.users = updatedUsersArray;
+
+           //My more complicated method before I found out about splice...
+
+            // let usersArrayOne = [];
+            // let usersArrayTwo = [];
+            // // Array one = list of users up until the user to delete...
+            // for (const user of this.users[user]) {
+            //   usersArrayOne.push(user)
+            // }
+            // // Array two = rest of the users AFTER the user to delete...
+            // for (let index = this.users.indexOf(this.users[user + 1]); index < this.users.length; index++) {
+            //   usersArrayTwo.push()
+            // }
+            
+            // //Pop arrayOne, set users to equal to concatenated array....
+            // usersArrayOne.pop();
+            // this.users = usersArrayOne.concat(usersArrayTwo);
+          }
+        });
+        this.clearCheckBox();
+      });
+    },
+    addRemoveToSelectedUserIds(event) {
+      if (this.selectedUserIDs.includes(event.target.id)) {
+        const updatedUserIds = this.selectedUserIDs.splice(this.selectedUserIDs.indexOf(event.target.id), 1);
+        this.selectedUserIDs = updatedUserIds;
+      } else {
+        this.selectedUserIDs.push(event.target.id);
+      }
     }
   },
   computed: {
@@ -203,7 +300,44 @@ export default {
         );
       }
       return filteredUsers;
-    }
+    },
+    actionButtonDisabled() {
+      while (this.selectedUserIDs == []) {
+        return true;
+      }
+      return false;
+    },
+    checkAllBoxes() {
+      const userCheckBoxes = document.querySelectorAll(".userCheck");
+      userCheckBoxes.forEach((checkBox) => {
+        checkBox.checked = true;
+      })
+      this.users.forEach((user) => {
+        this.selectedUserIDs.push(user.id);
+      });
+      return null;
+    },
+    uncheckAllBoxes() {
+      let userCheckBoxes = document.querySelectorAll(".userCheck");
+      userCheckBoxes.forEach((checkBox) => {
+        checkBox.checked = false;
+        this.selectedUserIDs.pop();
+      })
+
+      return null;
+    },
+    // **Step 4 - Check select all when all individual checkboxes get checked, but it doesn't work...
+    checkSelectAll() {
+      let selectAllCheckBox = document.getElementById("selectAll");
+      selectAllCheckBox.checked = true;
+      const userCheckBoxes = document.querySelectorAll(".userCheck");
+      userCheckBoxes.forEach((checkBox) => {
+        if(checkBox.checked == false) {
+          selectAllCheckBox.checked = false;
+        }
+      })
+      return null;
+    },
   }
 };
 </script>

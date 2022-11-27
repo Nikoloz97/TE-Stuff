@@ -28,7 +28,7 @@
       </tr>
       <!-- user listing -->
 
-      <tr v-for="user in filteredList" v-bind:key="user" v-bind:class = "{'disabled': search.status === 'Disabled'}">
+      <tr v-for="user in filteredList" v-bind:key="user" v-bind:class = "{'disabled': user.status === 'Disabled'}">
         <td>{{user.firstName}}</td>
         <td>{{user.lastName}}</td>
         <td>{{user.username}}</td>
@@ -63,13 +63,13 @@ export default {
 
   computed: {
     filteredList() {
-      let filterItem = this.users.filter((item) => {
+      let filterItem = this.users.filter((user) => {
 
-        return item.firstName.toLowerCase().includes(this.search.firstName.toLowerCase()) 
-        && item.lastName.toLowerCase().includes(this.search.lastName.toLowerCase()) 
-        && item.username.toLowerCase().includes(this.search.username.toLowerCase()) 
-        && item.emailAddress.toLowerCase().includes(this.search.emailAddress.toLowerCase()) 
-        && item.status.includes(this.search.status);
+        return user.firstName.toLowerCase().includes(this.search.firstName.toLowerCase()) 
+        && user.lastName.toLowerCase().includes(this.search.lastName.toLowerCase()) 
+        && user.username.toLowerCase().includes(this.search.username.toLowerCase()) 
+        && user.emailAddress.toLowerCase().includes(this.search.emailAddress.toLowerCase()) 
+        && user.status.includes(this.search.status);
       })
       return filterItem;
     }
