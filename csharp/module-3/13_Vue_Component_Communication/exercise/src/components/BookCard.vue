@@ -12,9 +12,9 @@
 <script>
 export default {
     name: 'book-card',
-    props: {
-        book: Object
-    },
+    props: 
+        ["book"]
+    ,
     methods: {
         markReadUnread() {
             this.$store.commit("FLIP_STATUS", this.book);

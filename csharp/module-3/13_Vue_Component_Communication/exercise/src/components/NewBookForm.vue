@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <a
+    <a
       id="show-form-button"
       href="#"
       v-if="showForm === false"
@@ -11,7 +11,7 @@
       href="#"
       v-if="showForm === true"
       v-on:click.prevent="showForm = false"
-    >Hide Form</a> -->
+    >Hide Form</a>
 
     <form v-on:submit.prevent="addNewBook" v-if="showForm === true">
       <div class="new-book-form">
@@ -37,7 +37,7 @@ export default {
   name: "add-book",
   data() {
     return {
-      showForm: true,
+      showForm: false,
       newBook: {
         read: false,
       },

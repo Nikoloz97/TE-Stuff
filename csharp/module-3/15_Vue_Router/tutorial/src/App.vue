@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <nav>
+      <router-link v-bind:to="{name: 'home'}">Home</router-link>
+      <router-link v-bind:to="{name: 'portfolio'}">Portfolio</router-link>
+      <router-link v-bind:to="{name: 'hobbies'}">My Hobbies</router-link>
     </nav>
+    <router-view />
   </div>
 </template>
 
@@ -22,12 +26,12 @@ nav {
   padding: 30px;
 }
 
-nav a {
+nav a.router-link-active {
   font-weight: bold;
-  /* ??? */
+  color:orange;
 }
 
-/* nav a.????? {
-  
-} */
+nav a.router-link-exact-active {
+  color:red;
+}
 </style>

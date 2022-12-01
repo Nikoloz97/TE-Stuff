@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <nav>
+      <a href="/">Home |</a>
+      <a href="/myBooks"> My Books</a>
+    </nav>
     <router-view />
   </div>
 </template>

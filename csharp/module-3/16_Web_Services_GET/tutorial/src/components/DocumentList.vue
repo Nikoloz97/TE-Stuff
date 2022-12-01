@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import docsService from "../services/DocService"
 export default {
   name: "document-list",
   data() {
