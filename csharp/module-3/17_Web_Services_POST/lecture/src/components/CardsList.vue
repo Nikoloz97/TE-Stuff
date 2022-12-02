@@ -72,7 +72,12 @@ export default {
     }
   },
   created() {
+    console.log("This is being created");
     this.retrieveCards();
+  },
+  mounted() {
+    console.log("This is being adding to the DOM");
+    //this.retrieveCards();
   },
   computed: {
     planned() {

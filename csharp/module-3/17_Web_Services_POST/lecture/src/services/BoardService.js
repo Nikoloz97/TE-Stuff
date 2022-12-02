@@ -6,6 +6,11 @@ const http = axios.create({
 
 export default {
 
+
+  addBoard(newBoard) {
+    return http.post('/boards', newBoard)
+  },
+
   getBoards() {
     return http.get('/boards');
   },

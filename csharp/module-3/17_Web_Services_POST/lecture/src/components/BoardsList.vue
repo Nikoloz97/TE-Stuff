@@ -75,6 +75,34 @@ export default {
       });
     },
     saveNewBoard() {
+      // go to the loading screen (so user can't button mash while promise is being resolved)
+      this.isLoading = true;
+      this.showAddBoard = false;
+      // Create a promise (.then)
+      boardsService.addBoard(this.newBoard).then(() => {
+        this.retrieveBoards();
+        // reset new board object
+        this.newBoard = {
+          title: '',
+          backgroundColor: this.randomBackgroundColor()
+        }
+        // Or, if things go wrong, catch it in an error object...
+      }).catch((error) => {
+        // If we got a response = server works... 
+        if(error.response) {
+          this.errorMsg = 'Error adding a new board! Here is what we got:' + error.response.statusText + '.'
+        }
+        // If we didn't get a response, server problem...
+        else if(error.request) {
+          this.errorMsg = 'Server problem'
+        }
+        else {
+          this.errorMsg = 'Trouble creating request'
+        }
+      }) 
+
+      
+      
 
     },
     randomBackgroundColor() {
