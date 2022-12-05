@@ -15,7 +15,7 @@ export default {
   },
   
   update(id, message) {
-    return http.put(`/messages/${id}`)
+    return http.put(`/messages/${id}`, message)
   },
 
   delete(id) {

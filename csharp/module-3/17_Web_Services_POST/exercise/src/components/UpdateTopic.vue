@@ -24,7 +24,7 @@ export default {
   methods: {
     updateTopic() {
       const topic = { id: this.topicID, title: this.title };
-      topic.Service.update(topic.id, topic).then(response => {
+      topicService.update(topic.id, topic).then(response => {
         if (response.status == 200) {
           this.$router.push("/")
         }
